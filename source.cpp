@@ -1,6 +1,11 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "callbacks.h"
+
+void registerCallbacks(GLFWwindow* window) {
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+}
 
 int main()
 {
@@ -22,6 +27,8 @@ int main()
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
+
+	registerCallbacks(window);
 
 	return 0;
 }
