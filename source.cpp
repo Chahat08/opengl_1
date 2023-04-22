@@ -30,5 +30,12 @@ int main()
 
 	registerCallbacks(window);
 
+	while (!glfwWindowShouldClose(window)) {
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
+
+	glfwTerminate();
+
 	return 0;
 }
