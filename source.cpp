@@ -16,10 +16,14 @@ void processInput(GLFWwindow* window) {
 
 int main()
 {
+	// initialse GLFW
+
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	// create window
 
 	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Project", NULL, NULL);
 	if (window == NULL) {
@@ -30,12 +34,18 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
+	// initialise GLAD
+
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
 	}
 
+	// register callbacks
+
 	registerCallbacks(window);
+
+	// render loop
 
 	while (!glfwWindowShouldClose(window)) {
 		processInput(window);
